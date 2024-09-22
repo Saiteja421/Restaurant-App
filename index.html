@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Restaurant App</title>
+    <link rel="stylesheet" href="/static/css/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="sidebar">
+        <h3>Tables</h3>
+        <div>
+          <input
+            type="text"
+            class="search-bar"
+            id="tableSearch"
+            onkeyup="filterTables()"
+            placeholder="Search table..."
+          />
+          <button type="button" id="table-button" onclick="clearTable()">
+            &times;
+          </button>
+        </div>
+        <div
+          class="table-item"
+          id="table-1"
+          data-table="1"
+          ondrop="dropItem(event)"
+          ondragover="allowDrop(event)"
+        >
+          Table - 1<br />Rs. <span id="price-1">0</span> | Total items:
+          <span id="items-1">0</span>
+        </div>
+        <div
+          class="table-item"
+          id="table-2"
+          data-table="2"
+          ondrop="dropItem(event)"
+          ondragover="allowDrop(event)"
+        >
+          Table - 2<br />Rs. <span id="price-2">0</span> | Total items:
+          <span id="items-2">0</span>
+        </div>
+        <div
+          class="table-item"
+          id="table-3"
+          data-table="3"
+          ondrop="dropItem(event)"
+          ondragover="allowDrop(event)"
+        >
+          Table - 3<br />Rs. <span id="price-3">0</span> | Total items:
+          <span id="items-3">0</span>
+        </div>
+      </div>
+
+
+      <div class="content">
+        <h3>Menu</h3>
+        <input type="text" id="menuSearch" placeholder="Search menu...">
+        
+        <div class="menu-item" draggable="true" ondragstart="dragItem(event)" data-item="Crusty Garlic Focaccia with Melted Cheese" data-price="105" data-category="Appetizers">
+            <span class="item-name">Crusty Garlic Focaccia with Melted Cheese</span><br>
+            <span class="item-price">Rs. 105.00</span>
+        </div>
+        
+        <div class="menu-item" draggable="true" ondragstart="dragItem(event)" data-item="French Fries" data-price="105" data-category="Sides">
+            <span class="item-name">French Fries</span><br>
+            <span class="item-price">Rs. 105.00</span>
+        </div>
+        
+        <div class="menu-item" draggable="true" ondragstart="dragItem(event)" data-item="Home Country Fries with Herbs & Chilli Flakes" data-price="105" data-category="Sides">
+            <span class="item-name">Home Country Fries with Herbs & Chilli Flakes</span><br>
+            <span class="item-price">Rs. 105.00</span>
+        </div>
+        
+        <div class="menu-item" draggable="true" ondragstart="dragItem(event)" data-item="French Fries with Cheese and Jalapenos" data-price="135" data-category="Sides">
+            <span class="item-name">French Fries with Cheese and Jalapenos</span><br>
+            <span class="item-price">Rs. 135.00</span>
+        </div>
+        
+        <div class="menu-item" draggable="true" ondragstart="dragItem(event)" data-item="Chicken & Cheese Burger" data-price="150" data-category="Main Course">
+            <span class="item-name">Chicken and Cheese Burger</span><br>
+            <span class="item-price">Rs. 150.00</span>
+        </div>
+        
+        <div class="menu-item" draggable="true" ondragstart="dragItem(event)" data-item="Veggie 9 Burger" data-price="120" data-category="Main Course">
+            <span class="item-name">Veggie 9 Burger</span><br>
+            <span class="item-price">Rs. 120.00</span>
+        </div>
+        
+        <div class="menu-item" draggable="true" ondragstart="dragItem(event)" data-item="Chicken Shawarma" data-price="130" data-category="Main Course">
+            <span class="item-name">Chicken Shawarma</span><br>
+            <span class="item-price">Rs. 130.00</span>
+        </div>
+        
+        <div class="menu-item" draggable="true" ondragstart="dragItem(event)" data-item="Chicken 65 Shawarma" data-price="150" data-category="Main Course">
+            <span class="item-name">Chicken 65 Shawarma</span><br>
+            <span class="item-price">Rs. 150.00</span>
+        </div>
+        
+        <div class="menu-item" draggable="true" ondragstart="dragItem(event)" data-item="Thumbs up" data-price="100" data-category="Soft Drinks">
+            <span class="item-name">Thumbs up</span><br>
+            <span class="item-price">Rs. 100.00</span>
+        </div>
+    </div>
+    <div id="orderModal" class="modal">
+      <div class="modal-content">
+          <span class="close" onclick="closeModal()">&times;</span>
+          <h2>Table - <span id="tableNumber"></span> | Order Details</h2>
+          <table>
+              <thead>
+                  <tr>
+                      <th>S.No</th>
+                      <th>Item</th>
+                      <th>Price</th>
+                      <th>Number of Servings</th>
+                  </tr>
+              </thead>
+              <tbody id="orderDetails"></tbody>
+          </table>
+          <h3>Total: Rs. <span id="totalAmount"></span></h3>
+          <button onclick="closeModal()">Close Session (Generate Bill)</button>
+      </div>
+  </div>
+    
+
+    <script src="/static/js/script.js"></script>
+  </body>
+</html>
